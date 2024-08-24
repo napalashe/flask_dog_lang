@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog to Programming Language</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Your Programming Language Based on Your Favorite Dog</h1>
+      <form method="POST">
+        <label for="dog_type">Choose your favorite dog:</label>
+        <select name="dog_type" id="dog_type" required>
+          <option value="Golden Retriever">Golden Retriever</option>
+          <option value="German Shepherd">German Shepherd</option>
+          <option value="Bulldog">Bulldog</option>
+          <option value="Poodle">Poodle</option>
+          <option value="Beagle">Beagle</option>
+          <option value="Dachshund">Dachshund</option>
+          <option value="Siberian Husky">Siberian Husky</option>
+          <option value="Chihuahua">Chihuahua</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+
+      {% if result %}
+      <div class="result">
+        <h2>Your programming language is: {{ language }}</h2>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

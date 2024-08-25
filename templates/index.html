@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dog to Programming Language</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
     <div class="container">
-        <form method="POST">
-            <div class="selection-box">
-                <h2>Select Your Favorite Dog</h2>
-                <label for="dog_type">Choose your favorite dog:</label>
-                <select name="dog_type" id="dog_type" required onchange="this.form.submit()">
-                    <option value="">Select a dog</option>
-                    <option value="Golden Retriever" {% if dog_type == 'Golden Retriever' %}selected{% endif %}>Golden Retriever</option>
-                    <option value="German Shepherd" {% if dog_type == 'German Shepherd' %}selected{% endif %}>German Shepherd</option>
-                    <option value="Bulldog" {% if dog_type == 'Bulldog' %}selected{% endif %}>Bulldog</option>
-                    <option value="Poodle" {% if dog_type == 'Poodle' %}selected{% endif %}>Poodle</option>
-                    <option value="Beagle" {% if dog_type == 'Beagle' %}selected{% endif %}>Beagle</option>
-                    <option value="Dachshund" {% if dog_type == 'Dachshund' %}selected{% endif %}>Dachshund</option>
-                    <option value="Siberian Husky" {% if dog_type == 'Siberian Husky' %}selected{% endif %}>Siberian Husky</option>
-                    <option value="Chihuahua" {% if dog_type == 'Chihuahua' %}selected{% endif %}>Chihuahua</option>
-                </select>
-                {% if dog_type %}
-                
-                <div class="dog-image">
-                    <img src="{{ url_for('static', filename='images/' + dog_type.replace(' ', '_').lower() + '.jpg') }}" alt="{{ dog_type }}">
-                </div>
-                {% endif %}
-            </div>
-
-            {% if dog_type %}
-            <div class="selection-box">
-                <h2>Select Your Favorite Activity</h2>
-                <label for="activity">Choose your favorite activity with your dog:</label>
-                <select name="activity" id="activity" required onchange="this.form.submit()">
-                    <option value="">Select an activity</option>
-                    <option value="Walk the dog" {% if activity == 'Walk the dog' %}selected{% endif %}>Walk the dog</option>
-                    <option value="Cuddle with the dog" {% if activity == 'Cuddle with the dog' %}selected{% endif %}>Cuddle with the dog</option>
-                    <option value="Play with dog on the water" {% if activity == 'Play with dog on the water' %}selected{% endif %}>Play with dog on the water</option>
-                    <option value="Go to the dog park" {% if activity == 'Go to the dog park' %}selected{% endif %}>Go to the dog park</option>
-                    <option value="Train the dog" {% if activity == 'Train the dog' %}selected{% endif %}>Train the dog</option>
-                    <option value="Run with the dog" {% if activity == 'Run with the dog' %}selected{% endif %}>Run with the dog</option>
-                    <option value="Teach the dog tricks" {% if activity == 'Teach the dog tricks' %}selected{% endif %}>Teach the dog tricks</option>
-                </select>
-                {% if activity %}
-                
-                <div class="activity-image">
-                    <img src="{{ url_for('static', filename='images/' + activity.replace(' ', '_').lower() + '.jpg') }}" alt="{{ activity }}">
-                </div>
-                {% endif %}
-            </div>
-            {% endif %}
-        </form>
-
-        {% if result %}
-        <div class="result">
-            <h2>Your programming language is: {{ language }}</h2>
-            <h3>Your programming paradigm is: {{ paradigm }}</h3>
+      <form method="POST" action="{{ url_for('index') }}">
+        <div class="selection-box">
+          <h2>Select Your Favorite Dog</h2>
+          <label for="dog_type">Choose your favorite dog:</label>
+          <select name="dog_type" id="dog_type" required>
+            <option value="">Select a dog</option>
+            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="German Shepherd">German Shepherd</option>
+            <option value="Bulldog">Bulldog</option>
+            <option value="Poodle">Poodle</option>
+            <option value="Beagle">Beagle</option>
+            <option value="Dachshund">Dachshund</option>
+            <option value="Siberian Husky">Siberian Husky</option>
+            <option value="Chihuahua">Chihuahua</option>
+          </select>
+          <div class="dog-image" id="dog-image">
+            <!-- Image for the dog will be displayed here -->
+          </div>
         </div>
-        {% endif %}
+
+        <div class="selection-box">
+          <h2>Select Your Favorite Activity</h2>
+          <label for="activity"
+            >Choose your favorite activity with your dog:</label
+          >
+          <select name="activity" id="activity" required>
+            <option value="">Select an activity</option>
+            <option value="Walk the dog">Walk the dog</option>
+            <option value="Cuddle with the dog">Cuddle with the dog</option>
+            <option value="Play with dog on the water">
+              Play with dog on the water
+            </option>
+            <option value="Go to the dog park">Go to the dog park</option>
+            <option value="Train the dog">Train the dog</option>
+            <option value="Run with the dog">Run with the dog</option>
+            <option value="Teach the dog tricks">Teach the dog tricks</option>
+          </select>
+          <div class="activity-image" id="activity-image">
+            <!-- Image for the activity will be displayed here -->
+          </div>
+        </div>
+
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>

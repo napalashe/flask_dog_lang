@@ -32,19 +32,22 @@ def welcome():
 # Route for the main page
 @app.route('/start', methods=['GET', 'POST'])
 def index():
-    dog_type = request.form.get('dog_type')
-    activity = request.form.get('activity')
+    if request.method == 'POST':
+        dog_type = request.form.get('dog_type')
+        activity = request.form.get('activity')
 
-    if request.method == 'POST' and dog_type and not activity:
-        # Render the template to show the activity dropdown after selecting the dog
-        return render_template('index.html', result=False, dog_type=dog_type)
+        if dog_type and activity:
+            programming_language, programming_paradigm = determine_language_and_paradigm(dog_type, activity)
+            return redirect(url_for('results', language=programming_language, paradigm=programming_paradigm))
 
-    if request.method == 'POST' and dog_type and activity:
-        # Continue to the next step after both dog and activity are selected
-        programming_language, programming_paradigm = determine_language_and_paradigm(dog_type, activity)
-        return render_template('index.html', result=True, language=programming_language, paradigm=programming_paradigm, dog_type=dog_type, activity=activity)
-    
-    return render_template('index.html', result=False)
+    return render_template('index.html')
+
+# Route for the results page
+@app.route('/results')
+def results():
+    language = request.args.get('language')
+    paradigm = request.args.get('paradigm')
+    return render_template('results.html', language=language, paradigm=paradigm)
 
 if __name__ == '__main__':
     app.run(debug=True)

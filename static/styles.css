@@ -1,28 +1,26 @@
-/* styles.css */
-
-/* Import the Ubuntu font */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
 
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #add8e6; /* Light blue background */
+  background-color: #add8e6;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
   flex-direction: column;
-  position: relative; /* To position the sun effect */
 }
 
 .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
   width: 90%;
   max-width: 1200px;
+  margin-top: 50px;
 }
 
 .selection-box {
@@ -30,8 +28,8 @@ body {
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-  width: 45%;
-  margin: 20px;
+  flex: 1 1 45%;
+  margin: 10px;
   text-align: center;
 }
 
@@ -42,16 +40,62 @@ body {
 
 .dog-image img,
 .activity-image img {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.7);
+  width: 100px;
+  padding: 5px 10px;
+  background-color: #0056b3;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: hoverUpDown 1s infinite ease-in-out alternate;
+}
+
+.submit-button:hover {
+  background-color: #003d7a;
+}
+
+@keyframes hoverUpDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(-60%);
+  }
 }
 
 .result {
+  display: none;
   margin-top: 20px;
   color: #0056b3;
   font-size: 18px;
+}
+
+.result.show {
+  display: block;
+  opacity: 1;
+  transition: opacity 5s ease;
+}
+
+.result img {
+  max-width: 150px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 select,
@@ -77,20 +121,88 @@ button:hover {
 /* Sun effect */
 .sun-effect {
   position: absolute;
-  width: 600px; /* Size of the sun */
-  height: 600px;
-  background: radial-gradient(circle, #ff6b6b, #d32f2f); /* Red sun colors */
+  width: 950px; /* Size of the sun */
+  height: 950px;
+  background: radial-gradient(circle, #ff6b6b, #d32f2f);
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1; /* Place it behind the container */
+  z-index: -1;
+}
+
+.language-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 700px;
+  height: 700px;
+  pointer-events: none;
+}
+
+.language-link {
+  position: absolute;
+  pointer-events: all;
+}
+
+.language-link img {
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+}
+
+#link-python {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#link-java {
+  top: 20%;
+  right: 10%;
+}
+
+#link-javascript {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+#link-csharp {
+  bottom: 20%;
+  right: 10%;
+}
+
+#link-ruby {
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+#link-go {
+  bottom: 20%;
+  left: 10%;
+}
+
+#link-cplusplus {
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+#link-swift {
+  top: 20%;
+  left: 10%;
 }
 
 /* Welcome page container */
 .welcome-container {
   text-align: center;
-  background-color: #ffffff;
+  background-color: rgba(70, 132, 100, 0.979);
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
@@ -100,14 +212,7 @@ button:hover {
   align-items: center;
   width: 80%;
   max-width: 500px;
-  position: relative; /* Ensure it's above the sun effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect for the box */
-.welcome-container:hover {
-  transform: translateY(-10px); /* Moves the box up slightly */
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3); /* Increases the shadow */
+  position: relative;
 }
 
 .welcome-container h1 {
@@ -127,7 +232,7 @@ button:hover {
   border-radius: 5px;
   transition: background-color 0.3s ease;
   text-align: center;
-  z-index: 1; /* Ensure it's above the sun effect */
+  z-index: 1;
 }
 
 .enter-button:hover {

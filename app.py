@@ -3,10 +3,10 @@ import random
 
 app = Flask(__name__)
 
-# Possible programming languages
+
 languages = ['Python', 'Java', 'JavaScript', 'C#', 'Ruby', 'Go', 'C++', 'Swift']
 
-# Possible programming paradigms
+
 paradigms = [
     'Object-Oriented Programming (OOP)', 
     'Functional Programming', 
@@ -18,18 +18,18 @@ paradigms = [
 ]
 
 def determine_language_and_paradigm(dog_type, activity):
-    # Randomly select a language and paradigm from all possibilities
+    
     selected_language = random.choice(languages)
     selected_paradigm = random.choice(paradigms)
 
     return selected_language, selected_paradigm
 
-# Route for the welcome page
+
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
 
-# Route for the main page
+
 @app.route('/start', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def index():
 
     return render_template('index.html')
 
-# Route for the results page
+
 @app.route('/results')
 def results():
     language = request.args.get('language')

@@ -1,34 +1,28 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const selectionBoxes = document.querySelectorAll(".selection-box");
   const resultDiv = document.querySelector(".result");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting immediately
+    event.preventDefault();
 
-    // Fade out the selection boxes
     selectionBoxes.forEach((box) => {
       box.classList.add("fade-out");
     });
 
-    // After the fade out completes, submit the form
     setTimeout(function () {
-      form.submit(); // Now submit the form after the fade out
-    }, 500); // Match the CSS transition duration for fade-out
+      form.submit();
+    }, 500);
   });
 
-  // If there is a result to show, fade it in slowly
   if (resultDiv) {
     setTimeout(function () {
       resultDiv.classList.add("fade-in");
     }, 500); // Start fading in after a brief delay
 
-    resultDiv.style.transition = "opacity 5s ease"; // Extend the fade-in duration to 5 seconds
+    resultDiv.style.transition = "opacity 5s ease";
   }
 });
-// script.js
 
 document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.querySelector(".submit-button");
@@ -42,6 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (resultDiv) {
         resultDiv.classList.add("show");
       }
-    }, 500); // Wait for the fade-out animation to complete
+    }, 500);
   });
 });

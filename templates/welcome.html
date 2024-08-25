@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="sun-effect"></div>
+    <!-- Sun effect behind the box -->
+
+    <div class="welcome-container">
+      <h1>Welcome to your future!</h1>
+      <a href="{{ url_for('index') }}" class="enter-button"
+        >Click here to enter</a
+      >
+    </div>
+  </body>
+</html>
